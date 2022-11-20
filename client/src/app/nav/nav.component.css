@@ -2,3 +2,9 @@
 .dropdown-item {
     cursor: pointer;
 }
+
+/* .capitalize {
+    text-transform: capitalize;
+} */
+
+/* Capitalize each word (ex. king king => King King) */

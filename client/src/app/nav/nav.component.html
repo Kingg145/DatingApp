@@ -24,8 +24,9 @@
 
         </ul>
 
-        <div class=" dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
-            <a class="dropdown-toggle text-light" dropdownToggle aria-controls="dropdown-animated">Welcome user</a>
+        <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+            <a class="dropdown-toggle text-light capitalize" dropdownToggle aria-controls="dropdown-animated">Welcome
+                {{user.username | titlecase}}</a>
             <div class="dropdown-menu mt-3" *dropdownMenu>
                 <a href="" class="dropdown-item">Edit Profile</a>
                 <a href="" class="dropdown-item" (click)="logout()">Logout</a>
@@ -38,7 +39,7 @@
                 placeholder="Username">
             <input name="password" [(ngModel)]="model.password" class="form-control mr-sm-2" type="password"
                 placeholder="Password">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
         </form>
 
 
