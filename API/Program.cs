@@ -12,6 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var _config = builder.Configuration;
 
+
+
+
 // Add services to the container.
 services.AddApplicationServices(_config);
 
@@ -29,6 +32,23 @@ services.AddIdentityServices(_config);
 
 
 var app = builder.Build();
+
+//SeedUsers
+using var scope = app.Services.CreateScope();
+var serviceProvider = scope.ServiceProvider;
+try
+{
+    var context = serviceProvider.GetRequiredService<DataContext>();
+    context.Database.Migrate(); // == dotnet ef database update
+    context.SeedUsers();
+}
+catch (System.Exception exception)
+{
+    var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+    logger.LogError(exception, "Migration Failed!");
+}
+
+
 
 app.UseMiddleware<ExceptionMiddleware>();
 
