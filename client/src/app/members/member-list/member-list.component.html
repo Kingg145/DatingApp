@@ -1,1 +1,18 @@
-<p>member-list works!</p>
+<!-- <ul>
+    <li *ngFor="let member of members">
+        {{member.id}} - {{member.userName}}
+    </li>
+</ul> -->
+
+<!-- <div class="row">
+    <div class="col-2">
+        <p *ngFor="let member of members">{{member.knownAs}}</p>
+    </div>
+</div> -->
+
+
+<div class="row">
+    <div class="col-2" *ngFor="let member of members">
+        <app-member-card [member]="member"></app-member-card>
+    </div>
+</div>
