@@ -55,5 +55,10 @@ namespace API.Data
         {
             _context.Entry(user).State = EntityState.Modified;
         }
+
+        public Task<MemberDto> UpdateMember(string username)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
